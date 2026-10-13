@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Montserrat:wght@400;700;900&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+    --bg-dark: #050505;
+    --bg-card: #111;
+    --atomic-blue: #00f0ff;
+    --text-main: #e0e0e0;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    font-family: 'Montserrat', sans-serif;
+    background-image: radial-gradient(circle at center, #111 0%, #000 100%);
+    min-height: 100vh;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    border-bottom: 1px solid rgba(0, 240, 255, 0.2);
+    background: rgba(0,0,0,0.8);
+}
+
+.logo {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 24px;
+    color: var(--text-main);
+    letter-spacing: 2px;
+}
+
+.logo span, .logo i { color: var(--atomic-blue); }
+
+.hero { text-align: center; padding: 60px 20px; }
+.hero h1 { font-size: 50px; font-weight: 900; text-transform: uppercase; letter-spacing: 5px; }
+.hero h1 span { color: var(--atomic-blue); text-shadow: 0 0 15px var(--atomic-blue); }
+.hero p { color: #aaa; margin-top: 10px; font-size: 18px; }
+
+/* Controles de Búsqueda y Filtro */
+.controles-busqueda input, .controles-busqueda select {
+    background-color: var(--bg-dark);
+    color: white;
+    border: 1px solid var(--atomic-blue);
+    padding: 12px;
+    font-family: inherit;
+    border-radius: 5px;
+}
+
+.galeria-peliculas {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.tarjeta-pelicula {
+    background: var(--bg-card);
+    border: 1px solid rgba(0, 240, 255, 0.2);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: 0.3s;
+    display: flex;
+    flex-direction: column;
+    position: relative; /* Importante para la etiqueta de Era */
+}
+
+.tarjeta-pelicula:hover {
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
+    transform: translateY(-5px);
+    border-color: var(--atomic-blue);
+}
+
+.tarjeta-pelicula img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-bottom: 2px solid var(--atomic-blue);
+}
+
+.categoria-tag {
+    position: absolute;
+    font-family: 'Share Tech Mono', monospace;
+    padding: 5px 10px;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 3px;
+    z-index: 10;
+}
+
+.tarjeta-info { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; }
+.tarjeta-info h3 { font-size: 22px; margin-bottom: 10px; color: var(--text-main); }
+.meta-info { font-family: 'Share Tech Mono', monospace; color: var(--atomic-blue); font-size: 14px; margin-bottom: 15px; display: flex; justify-content: space-between; }
+.tarjeta-info p { font-size: 14px; color: #aaa; line-height: 1.5; flex-grow: 1; margin-bottom: 15px;}
+
+.btn-ver-pelicula { display: block; text-align: center; background: var(--atomic-blue); color: #000; padding: 10px; cursor: pointer; font-weight: bold; border-radius: 5px; font-family: 'Share Tech Mono', monospace; transition: 0.3s; border: none; }
+.btn-ver-pelicula:hover { background: #fff; box-shadow: 0 0 15px var(--atomic-blue); }
+.btn-admin { text-decoration: none; border: 1px solid var(--atomic-blue); color: var(--atomic-blue); padding: 10px 20px; font-family: 'Share Tech Mono', monospace; cursor: pointer; transition: 0.3s; background: transparent; }
+.btn-admin:hover { background: var(--atomic-blue); color: #000; box-shadow: 0 0 10px var(--atomic-blue); }
+
+/* MODAL Y REPRODUCTOR */
+.modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 1000; justify-content: center; align-items: center; }
+.modal-contenido { background: var(--bg-card); border: 1px solid var(--atomic-blue); padding: 30px; width: 90%; max-width: 500px; position: relative; border-radius: 8px;}
+.reproductor-wrapper { max-width: 1000px; width: 95%; }
+.cerrar { position: absolute; top: 10px; right: 20px; color: var(--atomic-blue); font-size: 30px; cursor: pointer; }
+.iframe-container { position: relative; width: 100%; padding-bottom: 56.25%; /* 16:9 Aspect Ratio */ }
+.iframe-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+
+/* PANEL ADMIN */
+input, textarea, select { width: 100%; padding: 12px; margin-top: 15px; background: #050505; border: 1px solid #333; color: white; font-family: inherit; }
+input:focus, textarea:focus, select:focus { border-color: var(--atomic-blue); outline: none; }
+.btn-guardar { width: 100%; background: var(--atomic-blue); color: #000; border: none; padding: 15px; margin-top: 20px; font-weight: bold; cursor: pointer; font-family: 'Share Tech Mono', monospace; transition: 0.3s;}
+.btn-guardar:hover { background: #fff; box-shadow: 0 0 15px var(--atomic-blue); }
+.btn-cancelar { width: 100%; background: #333; color: #fff; border: none; padding: 15px; margin-top: 10px; cursor: pointer; font-family: 'Share Tech Mono', monospace; transition: 0.3s;}
+.btn-cancelar:hover { background: #555; }
+.admin-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 30px; }
+.admin-item { background: #111; border: 1px solid #333; padding: 15px; margin-top: 15px; display: flex; justify-content: space-between; align-items: center; border-radius: 5px; }
+.admin-item.oculto { opacity: 0.5; border-color: #ff4757; }
+.acciones button { padding: 5px 10px; margin-left: 5px; cursor: pointer; border: none; border-radius: 3px; font-weight: bold; transition: 0.3s;}
+.btn-edit { background: var(--atomic-blue); color: #000; }
+.btn-edit:hover { background: #fff; }
+.btn-hide { background: #f39c12; color: #000; }
+.btn-hide:hover { opacity: 0.8; }
+.btn-delete { background: #ff4757; color: #fff; }
+.btn-delete:hover { opacity: 0.8; }
+
+/* TOAST (Notificaciones) */
+.toast { visibility: hidden; min-width: 250px; background-color: var(--atomic-blue); color: #000; text-align: center; border-radius: 5px; padding: 16px; position: fixed; z-index: 2000; left: 50%; bottom: 30px; transform: translateX(-50%); font-weight: bold; font-family: 'Share Tech Mono', monospace; }
+.toast.mostrar { visibility: visible; animation: fadein 0.5s, fadeout 0.5s 2.5s; }
+@keyframes fadein { from {bottom: 0; opacity: 0;} to {bottom: 30px; opacity: 1;} }
+@keyframes fadeout { from {bottom: 30px; opacity: 1;} to {bottom: 0; opacity: 0;} }
+
+/* ESTILO PARA EL FOOTER */
+footer {
+    text-align: center;
+    padding: 30px 20px;
+    background: rgba(0,0,0,0.8);
+    border-top: 1px solid rgba(0, 240, 255, 0.2);
+    margin-top: 50px;
+    color: #aaa;
+    font-size: 14px;
+}
+
+@media (max-width: 800px) { .admin-grid { grid-template-columns: 1fr; } }

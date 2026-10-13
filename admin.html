@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Goji-Cinema</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo"><i class="fa-solid fa-database"></i> PANEL <span>MONARCH</span></div>
+        <a href="index.html" class="btn-admin"><i class="fa-solid fa-arrow-left"></i> Volver a la Web</a>
+    </header>
+
+    <!-- LOGIN -->
+    <div id="login-seccion" class="hero" style="margin-top: 50px;">
+        <h2>Acceso Restringido</h2>
+        <form onsubmit="verificarLogin(event)" style="max-width: 400px; margin: 20px auto;">
+            <input type="password" id="input-password" placeholder="Contraseña nivel Monarch" required>
+            <button type="submit" class="btn-guardar">Desencriptar</button>
+        </form>
+    </div>
+
+    <!-- PANEL (Oculto hasta hacer login) -->
+    <div id="panel-seccion" style="display: none; max-width: 1200px; margin: 40px auto; padding: 20px;">
+        <div class="admin-grid">
+            <!-- Formulario Add/Edit -->
+            <div class="formulario-admin tarjeta-info" style="background: var(--bg-card); border: 1px solid var(--atomic-blue);">
+                <h2 id="form-titulo">Subir Nueva Película</h2>
+                <form onsubmit="guardarPelicula(event)">
+                    <input type="hidden" id="pel-id">
+                    <input type="text" id="pel-titulo" placeholder="Título" required>
+                    <input type="number" id="pel-ano" placeholder="Año" required>
+                    <select id="pel-era" required>
+                        <option value="" disabled selected>Selecciona una Era</option>
+                        <option value="Showa">Era Showa</option>
+                        <option value="Heisei">Era Heisei</option>
+                        <option value="Millennium">Era Millennium</option>
+                        <option value="MonsterVerse">MonsterVerse</option>
+                        <option value="Reiwa">Era Reiwa</option>
+                    </select>
+                    <input type="text" id="pel-director" placeholder="Director" required>
+                    <textarea id="pel-sinopsis" placeholder="Sinopsis..." rows="4" required></textarea>
+                    <input type="url" id="pel-img" placeholder="URL Póster (Imgur recomendado)" required>
+                    <input type="url" id="pel-url" placeholder="URL Película (Usar links Embed)" required>
+                    <button type="submit" class="btn-guardar" id="btn-submit">Guardar en Base de Datos</button>
+                    <button type="button" class="btn-cancelar" onclick="limpiarFormulario()" style="display:none;" id="btn-cancelar">Cancelar Edición</button>
+                </form>
+            </div>
+
+            <!-- Tabla de Registros -->
+            <div class="lista-admin">
+                <h2>Registros Actuales</h2>
+                <div id="tabla-registros"></div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- TOAST NOTIFICACIÓN -->
+    <div id="toast" class="toast">Notificación</div>
+
+    <script src="admin.js"></script>
+</body>
+</html>

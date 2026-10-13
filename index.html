@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Goji-Cinema</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo"><i class="fa-solid fa-film"></i> GOJI-<span>CINEMA</span></div>
+        <a href="admin.html" class="btn-admin"><i class="fa-solid fa-gear"></i> Panel Monarch</a>
+    </header>
+
+    <section class="hero">
+        <h1>GOJI-<span>CINEMA</span></h1>
+        <p>Base de datos clasificada y reproductor de archivos Titan.</p>
+        
+        <!-- BUSCADOR Y FILTRO -->
+        <div class="controles-busqueda" style="margin-top: 30px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
+            <input type="text" id="buscador-input" placeholder="Buscar por título, año o monstruo..." style="max-width: 400px; margin-top: 0;">
+            <select id="filtro-era" style="max-width: 200px; margin-top: 0; background: var(--bg-dark); color: white; border: 1px solid var(--atomic-blue);">
+                <option value="Todas">Todas las Eras</option>
+                <option value="Showa">Era Showa (1954-1975)</option>
+                <option value="Heisei">Era Heisei (1984-1995)</option>
+                <option value="Millennium">Era Millennium (1999-2004)</option>
+                <option value="MonsterVerse">MonsterVerse (2014-Presente)</option>
+                <option value="Reiwa">Era Reiwa (2016-Presente)</option>
+            </select>
+        </div>
+    </section>
+
+    <section class="galeria-peliculas" id="contenedor-peliculas"></section>
+
+    <!-- Modal Reproductor de Películas -->
+    <div id="reproductor-modal" class="modal">
+        <div class="modal-contenido reproductor-wrapper">
+            <span class="cerrar" onclick="cerrarReproductor()">&times;</span>
+            <h2 id="reproductor-titulo" style="margin-bottom: 15px; text-align:center;">Cargando Archivo...</h2>
+            <div class="iframe-container">
+                <iframe id="video-frame" src="" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>¿Quieres ayudarme con el proyecto de las pelis de Godzilla? Puedes contactarme al correo: <a href="mailto:josuepacheco23.24l@gmail.com" style="color: var(--atomic-blue); text-decoration: none;">josuepacheco23.24l@gmail.com</a></p>
+    </footer>
+
+    <!-- TOAST NOTIFICACIÓN -->
+    <div id="toast" class="toast">Notificación</div>
+
+    <script src="script.js"></script>
+</body>
+</html>
